@@ -1,13 +1,13 @@
-package com.ohgiraffers.section02.crud;
+package com.ohgiraffers.section03.entity;
 
 import javax.persistence.*;
 
-@Entity(name = "Section02Menu")
+@Entity(name = "Section03Menu")
 @Table(name = "tbl_menu")
 public class Menu {
 
     @Id
-    @Column(name = "menu_code")
+    @Column(name="menu_code")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int menuCode;
 
@@ -25,11 +25,35 @@ public class Menu {
 
     protected Menu() {}
 
+    public Menu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+        this.menuCode = menuCode;
+        this.menuName = menuName;
+        this.menuPrice = menuPrice;
+        this.categoryCode = categoryCode;
+        this.orderableStatus = orderableStatus;
+    }
+
     public Menu(String menuName, int menuPrice, int categoryCode, String orderableStatus) {
         this.menuName = menuName;
         this.menuPrice = menuPrice;
         this.categoryCode = categoryCode;
         this.orderableStatus = orderableStatus;
+    }
+
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public int getMenuPrice() {
+        return menuPrice;
+    }
+
+    public int getCategoryCode() {
+        return categoryCode;
+    }
+
+    public String getOrderableStatus() {
+        return orderableStatus;
     }
 
     @Override
@@ -43,15 +67,11 @@ public class Menu {
                 '}';
     }
 
-    public int getMenuCode() {
-        return menuCode;
-    }
-
-    public String getMenuName() {
-        return menuName;
-    }
-
     public void setMenuName(String menuName) {
         this.menuName = menuName;
+    }
+
+    public void setMenuPrice(int menuPrice) {
+        this.menuPrice = menuPrice;
     }
 }
